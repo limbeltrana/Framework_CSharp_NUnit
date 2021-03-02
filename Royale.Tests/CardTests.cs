@@ -1,3 +1,5 @@
+using Framework.Models;
+using Framework.Services;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -49,5 +51,26 @@ namespace Royale.Tests
             //Assert.Pass();
         }
 
+        static string[] cardNames = { "Ice Spirit", "Mirror" };
+
+        [Test, Category("cards")]
+        [TestCaseSource("cardNames")]
+        [Parallelizable(ParallelScope.Children)]
+        //[TestCase("Ice Spirit")] se reemplaza por testCaseSource
+        //[TestCase("Mirror")]
+        public void Card_headers_are_correct_on_Card_Details_Page(string cardName)
+        {
+            new CardsPage(driver).GoTo().GetCardByName(cardName).Click();
+            var cardDetails = new CardDetailsPage(driver);
+
+            Card cardOnPage = cardDetails.GetBaseCard();
+            var card = new InMemoryCardServices().GetCardByName(cardName);
+
+            Assert.AreEqual(card.Name, cardOnPage.Name);
+            Assert.AreEqual(card.Type, cardOnPage.Type);
+            Assert.AreEqual(card.Arena, cardOnPage.Arena);
+            Assert.AreEqual(card.Rarity, cardOnPage.Rarity);
+            //Assert.Pass();
+        }
     }
 }

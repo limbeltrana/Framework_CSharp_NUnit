@@ -1,6 +1,8 @@
-﻿using OpenQA.Selenium;
+﻿using Framework.Models;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Royale.Pages
@@ -16,6 +18,17 @@ namespace Royale.Pages
         public (string category, string arena) GetCardCategory() {
             var categories = Map.CardCategory.Text.Split(",");
             return (categories[0].Trim(), categories[1].Trim());
+        }
+
+        public Card GetBaseCard() {
+
+            var (category, arena) = GetCardCategory();
+            return new Card {
+                Name = Map.CardName.Text,
+                Rarity = Map.CardRarity.Text.Split('\n').Last(),
+                Type = category,
+                Arena = arena
+            };
         }
     }
 
