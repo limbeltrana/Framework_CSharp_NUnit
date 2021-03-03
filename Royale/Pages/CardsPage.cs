@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Framework.Selenium;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,9 +11,9 @@ namespace Royale.Pages
     {
         public readonly CardsPageMap Map;
 
-        public CardsPage(IWebDriver driver) : base(driver)
+        public CardsPage() 
         {
-            Map = new CardsPageMap(driver);
+            Map = new CardsPageMap();
         }
 
 
@@ -33,15 +34,8 @@ namespace Royale.Pages
 
     public class CardsPageMap
     {
-        IWebDriver _driver;
-
-        public CardsPageMap(IWebDriver driver)
-        {
-            _driver = driver;
-        }
 
         //public IWebElement IceSpiritCard => _driver.FindElement(By.CssSelector("a[href *= 'Ice+Spirit']"));
-
-        public IWebElement Card(string name) => _driver.FindElement(By.CssSelector($"a[href *= '{name}']"));
+        public IWebElement Card(string name) => Driver.FindElement(By.CssSelector($"a[href *= '{name}']"));
     }
 }

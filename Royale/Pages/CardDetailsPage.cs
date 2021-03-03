@@ -1,18 +1,16 @@
 ﻿using Framework.Models;
+using Framework.Selenium;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Royale.Pages
 {
     public class CardDetailsPage : PageBase
     {
         public readonly CardDetailsMap Map;
-        public CardDetailsPage(IWebDriver driver):base(driver)
+        public CardDetailsPage()
         {
-            Map = new CardDetailsMap(driver);
+            Map = new CardDetailsMap();
         }
 
         public (string category, string arena) GetCardCategory() {
@@ -34,16 +32,10 @@ namespace Royale.Pages
 
     public class CardDetailsMap 
     {
-        IWebDriver _driver;
-
-        public CardDetailsMap(IWebDriver driver)
-        {
-            _driver = driver;
-        }
-
-        public IWebElement CardName => _driver.FindElement(By.CssSelector("[class*='card__cardName']"));
-        public IWebElement CardCategory => _driver.FindElement(By.ClassName("card__rarity"));
-        public IWebElement CardRarity => _driver.FindElement(By.CssSelector(".card__common"));
+   
+        public IWebElement CardName => Driver.FindElement(By.CssSelector("[class*='card__cardName']"));
+        public IWebElement CardCategory => Driver.FindElement(By.ClassName("card__rarity"));
+        public IWebElement CardRarity => Driver.FindElement(By.CssSelector(".card__common"));
 
 
     }
