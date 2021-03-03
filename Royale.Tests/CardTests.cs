@@ -5,6 +5,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using Royale.Pages;
+using System.Collections.Generic;
 
 namespace Royale.Tests
 {
@@ -27,27 +28,29 @@ namespace Royale.Tests
             Driver.Current.Quit();
         }
 
-        [Test]
-        public void Ice_Spirit_is_on_Cards_Page()
+        static IList<Card> apiCards = new ApiCardService().GetAllCards();
+
+        [Test, Category("cards")]
+        [TestCaseSource ("apiCards")]
+        [Parallelizable(ParallelScope.Children)]
+        public void Ice_Spirit_is_on_Cards_Page(Card card)
         {
-            var iceSpirit =  WrapPages.Cards.GoTo().GetCardByName("Ice Spirit");
-            Assert.That(iceSpirit.Displayed);
+            var cardOnPage =  WrapPages.Cards.GoTo().GetCardByName(card.Name);
+            Assert.That(cardOnPage.Displayed);
         }
 
 
-        static string[] cardNames = { "Ice Spirit", "Mirror" };
-
+      
         [Test, Category("cards")]
-        [TestCaseSource("cardNames")]
+        [TestCaseSource("apiCards")]
         [Parallelizable(ParallelScope.Children)]
         //[TestCase("Ice Spirit")] se reemplaza por testCaseSource
         //[TestCase("Mirror")]
-        public void Card_headers_are_correct_on_Card_Details_Page(string cardName)
+        public void Card_headers_are_correct_on_Card_Details_Page(Card card)
         {
-            WrapPages.Cards.GoTo().GetCardByName(cardName).Click();
+            WrapPages.Cards.GoTo().GetCardByName(card.Name).Click();
 
             Card cardOnPage = WrapPages.CardDetails.GetBaseCard();
-            var card = new InMemoryCardServices().GetCardByName(cardName);
 
             Assert.AreEqual(card.Name, cardOnPage.Name);
             Assert.AreEqual(card.Type, cardOnPage.Type);
