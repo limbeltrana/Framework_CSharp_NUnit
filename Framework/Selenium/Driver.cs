@@ -12,8 +12,12 @@ namespace Framework.Selenium
         [ThreadStatic]
         private static IWebDriver _driver;
 
+        [ThreadStatic]
+        public static Wait wait;
+
         public static void Init() {
             _driver = new ChromeDriver();
+            wait = new Wait(10);
         }
 
         public static IWebDriver Current => _driver ?? throw new NullReferenceException("_driver is null");

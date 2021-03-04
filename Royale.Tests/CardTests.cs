@@ -33,7 +33,7 @@ namespace Royale.Tests
         [Test, Category("cards")]
         [TestCaseSource ("apiCards")]
         [Parallelizable(ParallelScope.Children)]
-        public void Ice_Spirit_is_on_Cards_Page(Card card)
+        public void Card_is_on_Cards_Page(Card card)
         {
             var cardOnPage =  WrapPages.Cards.GoTo().GetCardByName(card.Name);
             Assert.That(cardOnPage.Displayed);
