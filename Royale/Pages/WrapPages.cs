@@ -18,11 +18,15 @@ namespace Royale.Pages
         [ThreadStatic]
         public static CopyDeckPage CopyDeck;
 
+        [ThreadStatic]
+        public static ClassRoyalSuperCell SuperCell;
+
         public static void Init() {
             Cards = new CardsPage();
             CardDetails = new CardDetailsPage();
             DeckBuilder = new DeckBuilderPage();
             CopyDeck = new CopyDeckPage();
+            SuperCell = new ClassRoyalSuperCell();
         }
     }
 }

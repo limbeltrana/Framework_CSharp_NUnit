@@ -22,6 +22,8 @@ namespace Framework.Selenium
 
         public static IWebDriver Current => _driver ?? throw new NullReferenceException("_driver is null");
 
+        public static string Title => Current.Title;
+
         public static void GoToPage(string url) {
             if (!url.StartsWith("http"))
             {

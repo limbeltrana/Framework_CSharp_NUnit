@@ -21,7 +21,7 @@ namespace Royale.Tests
             Driver.GoToPage("https://statsroyale.com");
         }
 
-        [TearDown]
+        [TearDown, Category("copydeck")]
         //after each test
         public void AfterEach()
         {
@@ -29,27 +29,31 @@ namespace Royale.Tests
         }
 
 
-        [Test]
+        [Test,Category("copydeck")]
         public void User_can_copy_the_deck() {
 
-            //var wait = new WebDriverWait(Driver.Current, TimeSpan.FromSeconds(10));
-            //Driver.FindElement(By.CssSelector("[href='/deckbuilder']")).Click();
-            WrapPages.DeckBuilder.GoTo();
-
-            //Driver.FindElement(By.XPath("//a[text()='add cards manually']")).Click();
-            WrapPages.DeckBuilder.AddCardsManualy();
-
-            Driver.wait.Until(drvr => WrapPages.DeckBuilder.Map.CopyDeckIcon.Displayed);
-            //Driver.FindElement(By.CssSelector(".copyButton")).Click();
+            WrapPages.DeckBuilder.GoTo().AddCardsManualy();
             WrapPages.DeckBuilder.CopySuggestedDeck();
-
-            Driver.FindElement(By.Id("button-open")).Click();
-            Driver.wait.Until(drvr => WrapPages.CopyDeck.Map.CopiedMessage.Displayed);
             WrapPages.CopyDeck.Yes();
-            //var copyMessage = Driver.FindElement(By.CssSelector(".notes.active"));
             Assert.That(WrapPages.CopyDeck.Map.CopiedMessage.Displayed);
-            ;
+        }
 
+        [Test,Category("copydeck")]
+        public void User_opens_app_store() {
+            WrapPages.DeckBuilder.GoTo().AddCardsManualy();
+            WrapPages.DeckBuilder.CopySuggestedDeck();
+            WrapPages.CopyDeck.No().GoToClassRoyalSuperCellPage("App Store").OpenAppStore();
+            //WrapPages.CopyDeck.No().OpenAppStore();
+            Assert.That(Driver.Title,Is.EqualTo("‎Clash Royale on the App Store"));
+        }
+
+        [Test, Category("copydeck")]
+        public void User_opens_google_play() {
+            WrapPages.DeckBuilder.GoTo().AddCardsManualy();
+            WrapPages.DeckBuilder.CopySuggestedDeck();
+            WrapPages.CopyDeck.No().GoToClassRoyalSuperCellPage("Google Play").OpenGooglePlay();
+            //WrapPages.CopyDeck.No().OpenGooglePlay();
+            Assert.AreEqual("Clash Royale - Apps on Google Play", Driver.Title);
         }
     }
 }

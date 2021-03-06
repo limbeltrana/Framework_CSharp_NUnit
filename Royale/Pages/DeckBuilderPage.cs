@@ -18,11 +18,13 @@ namespace Royale.Pages
         public DeckBuilderPage GoTo()
         {
             headerNav.Map.DeckBuilderLink.Click();
+            Driver.wait.Until(drvr => Map.AddCardsManuallyLink.Displayed);
             return this;
         }
 
         public void AddCardsManualy() {
             Map.AddCardsManuallyLink.Click();
+            Driver.wait.Until(drvr => Map.CopyDeckIcon.Displayed);
         }
 
 
