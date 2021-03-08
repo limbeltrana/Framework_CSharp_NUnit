@@ -1,20 +1,22 @@
-﻿using Framework.Selenium;
+﻿using Framework;
+using Framework.Selenium;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using Royale.Pages;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Royale.Tests
 {
     public class CopyDeckTests
     {
+        [OneTimeSetUp]
+        public void BeforeAll() {
+            FW.CreateTestResultsDirectory();
+        }
+        
         [SetUp]
         //Setup before each test method
         public void BeforeEach()
         {
+            FW.SetLogger();
             Driver.Init();
             WrapPages.Init();
             Driver.Current.Manage().Window.Maximize();
@@ -25,7 +27,8 @@ namespace Royale.Tests
         //after each test
         public void AfterEach()
         {
-            Driver.Current.Quit();
+            Driver.Quit();
+            //Driver.Current.Quit();
         }
 
 

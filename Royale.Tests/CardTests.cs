@@ -1,3 +1,4 @@
+using Framework;
 using Framework.Models;
 using Framework.Selenium;
 using Framework.Services;
@@ -11,11 +12,17 @@ namespace Royale.Tests
 {
     public class CardTests
     {
+        [OneTimeSetUp]
+        public void BeforeAll()
+        {
+            FW.CreateTestResultsDirectory();
+        }
 
         [SetUp]
         //Setup before each test method
         public void BeforeEach()
         {
+            FW.SetLogger();
             Driver.Init();
             WrapPages.Init();
             Driver.Current.Manage().Window.Maximize();

@@ -16,8 +16,15 @@ namespace Framework.Selenium
         public static Wait wait;
 
         public static void Init() {
+            FW.Log.Info("Browser: Chrome");
             _driver = new ChromeDriver();
             wait = new Wait(10);
+        }
+
+        public static void Quit() {
+            FW.Log.Info("Close browser");
+            Current.Quit();
+            Current.Dispose();
         }
 
         public static IWebDriver Current => _driver ?? throw new NullReferenceException("_driver is null");
@@ -29,7 +36,7 @@ namespace Framework.Selenium
             {
                 url = $"http://{url}";
             }
-            Debug.WriteLine(url);
+            FW.Log.Info(url);
             Current.Navigate().GoToUrl(url);
         }
 

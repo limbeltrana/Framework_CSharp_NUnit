@@ -1,4 +1,5 @@
-﻿using Framework.Selenium;
+﻿using Framework;
+using Framework.Selenium;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -17,30 +18,31 @@ namespace Royale.Pages
 
         public DeckBuilderPage GoTo()
         {
+            FW.Log.Step("Click deck builder link");
             headerNav.Map.DeckBuilderLink.Click();
             Driver.wait.Until(drvr => Map.AddCardsManuallyLink.Displayed);
             return this;
         }
 
         public void AddCardsManualy() {
+            FW.Log.Step("Clikc add cards manually link");
             Map.AddCardsManuallyLink.Click();
             Driver.wait.Until(drvr => Map.CopyDeckIcon.Displayed);
         }
 
 
         public void CopySuggestedDeck() {
+            FW.Log.Step("Click copy deck icon");
             Map.CopyDeckIcon.Click();
         }
     }
 
     public class DeckBuilderPageMap
     {
-        //public IWebElement AddCardsManuallyLink => Driver.FindElement(By.CssSelector("[href='/deckbuilder']"));
-        public IWebElement AddCardsManuallyLink => Driver.FindElement(By.CssSelector("[class='deckBuilderInput__separator']" +
+       public IWebElement AddCardsManuallyLink => Driver.FindElement(By.CssSelector("[class='deckBuilderInput__separator']" +
             "+[class='ui__blueLink ui__link']"));
 
-        // public IWebElement CopyDeckIcon => Driver.FindElement(By.XPath("//a[text()='add cards manually']"));
-        public IWebElement CopyDeckIcon => Driver.FindElement(By.CssSelector(".copyButton"));
+       public IWebElement CopyDeckIcon => Driver.FindElement(By.CssSelector(".copyButton"));
         
     }
 }

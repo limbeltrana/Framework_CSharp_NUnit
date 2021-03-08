@@ -30,12 +30,25 @@ namespace Framework
         }
 
         public static void SetLogger() {
-            var testResultsDir = WORKSPACE_DIRECTORY + "TestResults";
-            var testName = TestContext.CurrentContext.Test.Name;
-            var fullPath = $"{testResultsDir}/{testName}";
+            lock (_setLoggerLock)
+            {
+                var testResultsDir = WORKSPACE_DIRECTORY + "TestResults";
+                var testName = TestContext.CurrentContext.Test.Name;
+                var fullPath = $"{testResultsDir}/{testName}";
 
-            CurrentTestDirectory = Directory.CreateDirectory(fullPath);
-            _logger = new Logger(testName,CurrentTestDirectory.FullName + "/log.txt");
+                if (Directory.Exists(fullPath))
+                {
+                    CurrentTestDirectory = Directory.CreateDirectory(fullPath + TestContext.CurrentContext.Test.ID);
+                }
+                else
+                {
+                    CurrentTestDirectory = Directory.CreateDirectory(fullPath);
+                }
+                
+                _logger = new Logger(testName, CurrentTestDirectory.FullName + "/log.txt");
+            }
         }
+
+        public static object _setLoggerLock = new object();
     }
 }
