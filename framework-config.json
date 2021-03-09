@@ -1,0 +1,10 @@
+{
+  "driver": {
+    "browser": "chrome"
+  },
+
+  "test": {
+    // "url": "staging.statsroyale.com"
+    "url": "https://statsroyale.com"
+  }
+}

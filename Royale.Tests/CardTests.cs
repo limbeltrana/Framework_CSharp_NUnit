@@ -15,6 +15,7 @@ namespace Royale.Tests
         [OneTimeSetUp]
         public void BeforeAll()
         {
+            FW.SetConfig();
             FW.CreateTestResultsDirectory();
         }
 
@@ -26,7 +27,8 @@ namespace Royale.Tests
             Driver.Init();
             WrapPages.Init();
             Driver.Current.Manage().Window.Maximize();
-            Driver.GoToPage("https://statsroyale.com");
+           // Driver.GoToPage("https://statsroyale.com");
+            Driver.GoToPage(FW.Config.Test.Url);
         }
 
         [TearDown]

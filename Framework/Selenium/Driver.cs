@@ -16,8 +16,8 @@ namespace Framework.Selenium
         public static Wait wait;
 
         public static void Init() {
-            FW.Log.Info("Browser: Chrome");
-            _driver = new ChromeDriver();
+           
+            _driver = DriverFactory.Build(FW.Config.Driver.Browser);
             wait = new Wait(10);
         }
 
@@ -53,9 +53,7 @@ namespace Framework.Selenium
             {
                 FoundBy = by
             };
-           
         }
-
-         
+      
     }
 }

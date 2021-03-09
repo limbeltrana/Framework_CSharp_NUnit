@@ -12,6 +12,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Royale.Tests", "Royale.Test
 		{6E9F6871-62EF-4D62-80FC-DC385782322C} = {6E9F6871-62EF-4D62-80FC-DC385782322C}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4687C4B8-6C55-4394-8987-2DCE66F2D19A}"
+	ProjectSection(SolutionItems) = preProject
+		framework-config.json = framework-config.json
+	EndProjectSection
+	ProjectSection(FolderGlobals) = preProject
+		C_5_4Users_4lina_1beltran_4source_4repos_4Framework_4framework-config_1json__JsonSchema = https://json.schemastore.org/config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
