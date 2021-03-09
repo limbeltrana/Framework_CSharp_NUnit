@@ -22,7 +22,7 @@ namespace Royale.Pages
             return this;
         }
 
-        public IWebElement GetCardByName(string cardName) {
+        public Element GetCardByName(string cardName) {
             if (cardName.Contains(" "))
             {
                 cardName = cardName.Replace(" ", "+");
@@ -36,6 +36,6 @@ namespace Royale.Pages
     {
 
         //public IWebElement IceSpiritCard => _driver.FindElement(By.CssSelector("a[href *= 'Ice+Spirit']"));
-        public IWebElement Card(string name) => Driver.FindElement(By.CssSelector($"a[href *= '{name}']"));
+        public Element Card(string name) => Driver.FindElement(By.CssSelector($"a[href *= '{name}']"), $"Card {name}");
     }
 }

@@ -40,13 +40,20 @@ namespace Framework.Selenium
             Current.Navigate().GoToUrl(url);
         }
 
-        public static IWebElement FindElement(By by) {
-            return Current.FindElement(by);
+        public static Element FindElement(By by, string elementName) {
+            return new Element(Current.FindElement(by), elementName)
+            {
+                FoundBy = by
+            };
         }
 
 
-        public static IList<IWebElement> FindElements(By by) {
-            return Current.FindElements(by);
+        public static Elements FindElements(By by) {
+            return new Elements(Current.FindElements(by))
+            {
+                FoundBy = by
+            };
+           
         }
 
          

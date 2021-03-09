@@ -44,9 +44,9 @@ namespace Royale.Pages
     }
 
     public class ClassRoyalSuperCellMap {
-        public IWebElement GooglePlayButton => Driver.FindElement(By.CssSelector(".buttons.appstores .googleplay"));
-        public IWebElement AppStoreButton => Driver.FindElement(By.CssSelector(".buttons.appstores .appstore"));
+        public Element GooglePlayButton => Driver.FindElement(By.CssSelector(".buttons.appstores .googleplay"), "Google Play button");
+        public Element AppStoreButton => Driver.FindElement(By.CssSelector(".buttons.appstores .appstore"), "App Store button");
 
-        public IWebElement AcceptCookiesButton => Driver.FindElement(By.CssSelector(".cc-btn.cc-dismiss"));
+        public Element AcceptCookiesButton => Driver.FindElement(By.CssSelector(".cc-btn.cc-dismiss"), "Accept cookies button");
     }
 }

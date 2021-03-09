@@ -13,15 +13,18 @@ namespace Royale.Pages
             Map = new CardDetailsMap();
         }
 
-        public (string category, string arena) GetCardCategory() {
+        public (string category, string arena) GetCardCategory()
+        {
             var categories = Map.CardCategory.Text.Split(",");
             return (categories[0].Trim(), categories[1].Trim());
         }
 
-        public Card GetBaseCard() {
+        public Card GetBaseCard()
+        {
 
             var (category, arena) = GetCardCategory();
-            return new Card {
+            return new Card
+            {
                 Name = Map.CardName.Text,
                 Rarity = Map.CardRarity.Text.Split('\n').Last(),
                 Type = category,
@@ -30,13 +33,12 @@ namespace Royale.Pages
         }
     }
 
-    public class CardDetailsMap 
+    public class CardDetailsMap
     {
-   
-        public IWebElement CardName => Driver.FindElement(By.CssSelector("[class*='card__cardName']"));
-        public IWebElement CardCategory => Driver.FindElement(By.ClassName("card__rarity"));
-        public IWebElement CardRarity => Driver.FindElement(By.CssSelector(".card__common"));
 
-
+        public Element CardName => Driver.FindElement(By.CssSelector("[class*='card__cardName']"), "Card Name");
+        public Element CardCategory => Driver.FindElement(By.ClassName("card__rarity"), "Card category");
+        public Element CardRarity => Driver.FindElement(By.CssSelector(".card__common"), "Card rarity");
     }
 }
+    
