@@ -3,6 +3,7 @@ using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Text;
 
 namespace Framework.Selenium
@@ -15,11 +16,22 @@ namespace Framework.Selenium
         [ThreadStatic]
         public static Wait wait;
 
+        public static Window window;
+
         public static void Init() {
            
             _driver = DriverFactory.Build(FW.Config.Driver.Browser);
             wait = new Wait(10);
+            window = new Window();
+            window.Maximize();
         }
+
+        public static void TakeScreenshot(string imageName) {
+            var ss = ((ITakesScreenshot)Current).GetScreenshot();
+            var ssFileName = Path.Combine(FW.CurrentTestDirectory.FullName, imageName);
+            ss.SaveAsFile($"{ssFileName}.png", ScreenshotImageFormat.Png);
+        }
+
 
         public static void Quit() {
             FW.Log.Info("Close browser");

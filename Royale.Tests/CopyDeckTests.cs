@@ -2,38 +2,12 @@
 using Framework.Selenium;
 using NUnit.Framework;
 using Royale.Pages;
+using Royale.Tests.Base;
 
 namespace Royale.Tests
 {
-    public class CopyDeckTests
+    public class CopyDeckTests : TestBase
     {
-        [OneTimeSetUp]
-        public void BeforeAll() {
-            FW.SetConfig();
-            FW.CreateTestResultsDirectory();
-        }
-        
-        [SetUp]
-        //Setup before each test method
-        public void BeforeEach()
-        {
-            FW.SetLogger();
-            Driver.Init();
-            WrapPages.Init();
-            Driver.Current.Manage().Window.Maximize();
-            Driver.GoToPage(FW.Config.Test.Url);
-            //Driver.GoToPage("https://statsroyale.com");
-        }
-
-        [TearDown, Category("copydeck")]
-        //after each test
-        public void AfterEach()
-        {
-            Driver.Quit();
-            //Driver.Current.Quit();
-        }
-
-
         [Test,Category("copydeck")]
         public void User_can_copy_the_deck() {
 

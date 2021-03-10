@@ -6,37 +6,13 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using Royale.Pages;
+using Royale.Tests.Base;
 using System.Collections.Generic;
 
 namespace Royale.Tests
 {
-    public class CardTests
+    public class CardTests : TestBase
     {
-        [OneTimeSetUp]
-        public void BeforeAll()
-        {
-            FW.SetConfig();
-            FW.CreateTestResultsDirectory();
-        }
-
-        [SetUp]
-        //Setup before each test method
-        public void BeforeEach()
-        {
-            FW.SetLogger();
-            Driver.Init();
-            WrapPages.Init();
-            Driver.Current.Manage().Window.Maximize();
-           // Driver.GoToPage("https://statsroyale.com");
-            Driver.GoToPage(FW.Config.Test.Url);
-        }
-
-        [TearDown]
-        //after each test
-        public void AfterEach(){
-            Driver.Current.Quit();
-        }
-
         static IList<Card> apiCards = new ApiCardService().GetAllCards();
 
         [Test, Category("cards")]
@@ -48,8 +24,7 @@ namespace Royale.Tests
             Assert.That(cardOnPage.Displayed);
         }
 
-
-      
+          
         [Test, Category("cards")]
         [TestCaseSource("apiCards")]
         [Parallelizable(ParallelScope.Children)]
