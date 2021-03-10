@@ -1,6 +1,6 @@
 ﻿using Framework.Selenium;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 
 namespace Royale.Pages
 {
@@ -24,7 +24,8 @@ namespace Royale.Pages
             AcceptCookies();
             Map.NoButton.Click();
             //AcceptCookies();
-            Driver.wait.Until(drvr => Map.GooglePlayButton.Displayed);
+            //Driver.wait.Until(drvr => Map.GooglePlayButton.Displayed);
+            Driver.wait.Until(ExpectedConditions.ElementIsVisible(Map.GooglePlayButton.FoundBy));
             return this;
         }
 
@@ -39,7 +40,8 @@ namespace Royale.Pages
 
         public void AcceptCookies() {
             Map.AcceptCookiesButton.Click();
-            Driver.wait.Until(drvr => !Map.AcceptCookiesButton.Displayed);
+            //Driver.wait.Until(drvr => !Map.AcceptCookiesButton.Displayed);
+            Driver.wait.Until(WaitConditions.ElementNotDisplayed(Map.AcceptCookiesButton));
         }
     }
 

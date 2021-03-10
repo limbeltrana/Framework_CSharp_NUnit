@@ -26,5 +26,9 @@ namespace Framework.Selenium
         public bool Until(Func<IWebDriver, bool> condition) {
             return _wait.Until(condition);
         }
+
+        public IWebElement Until(Func<IWebDriver, IWebElement> condition) {
+            return _wait.Until(condition);
+        }
     }
 }

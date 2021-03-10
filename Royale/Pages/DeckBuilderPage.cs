@@ -24,9 +24,13 @@ namespace Royale.Pages
         }
 
         public void AddCardsManualy() {
-            Driver.wait.Until(drvr => Map.AddCardsManuallyLink.Displayed);
-            Map.AddCardsManuallyLink.Click();
-            Driver.wait.Until(drvr => Map.CopyDeckIcon.Displayed);
+            //Driver.wait.Until(drvr => Map.AddCardsManuallyLink.Displayed);
+
+            //Driver.wait.Until(WaitConditions.ElementDisplayed(Map.AddCardsManuallyLink));
+            //Map.AddCardsManuallyLink.Click();
+            Driver.wait.Until(WaitConditions.ElementIsDisplayed(Map.AddCardsManuallyLink)).Click();                
+            //Driver.wait.Until(drvr => Map.CopyDeckIcon.Displayed);
+            Driver.wait.Until(WaitConditions.ElementDisplayed(Map.CopyDeckIcon));
         }
 
 
