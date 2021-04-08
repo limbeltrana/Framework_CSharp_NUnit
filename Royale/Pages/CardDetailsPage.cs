@@ -37,7 +37,6 @@ namespace Royale.Pages
     {
 
         public Element CardName => Driver.FindElement(By.CssSelector("[class*='card__cardName']"), "Card Name");
-
         public Element CardCategory => Driver.FindElement(By.ClassName("card__rarity"), "Card category");
         public Element CardRarity => Driver.FindElement(By.CssSelector(".card__common"), "Card rarity");
     }

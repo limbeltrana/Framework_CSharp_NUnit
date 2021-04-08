@@ -1,13 +1,11 @@
 ﻿using OpenQA.Selenium.Support.Extensions;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
-using System.Text;
 
 namespace Framework.Selenium
 {
-    public class Window
+  public class Window
     {
         public ReadOnlyCollection<string> CurrentWindows => Driver.Current.WindowHandles;
 

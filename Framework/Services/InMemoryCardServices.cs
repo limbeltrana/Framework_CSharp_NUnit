@@ -1,11 +1,9 @@
 ﻿using Framework.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Framework.Services
 {
-    public class InMemoryCardServices : ICardService
+  public class InMemoryCardServices : ICardService
     {
         public Card GetCardByName(string cardName)
         {

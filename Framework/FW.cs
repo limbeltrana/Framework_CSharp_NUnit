@@ -2,13 +2,11 @@
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Framework
 {
-    public class FW
+  public class FW
     {
         public static string WORKSPACE_DIRECTORY = Path.GetFullPath(@"../../../../");
 

@@ -1,17 +1,13 @@
-using Framework;
 using Framework.Models;
-using Framework.Selenium;
 using Framework.Services;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using Royale.Pages;
 using Royale.Tests.Base;
 using System.Collections.Generic;
 
 namespace Royale.Tests
 {
-    public class CardTests : TestBase
+  public class CardTests : TestBase
     {
         static IList<Card> apiCards = new ApiCardService().GetAllCards();
 
@@ -28,8 +24,7 @@ namespace Royale.Tests
         [Test, Category("cards")]
         [TestCaseSource("apiCards")]
         [Parallelizable(ParallelScope.Children)]
-        //[TestCase("Ice Spirit")] se reemplaza por testCaseSource
-        //[TestCase("Mirror")]
+
         public void Card_headers_are_correct_on_Card_Details_Page(Card card)
         {
             WrapPages.Cards.GoTo().GetCardByName(card.Name).Click();
@@ -40,7 +35,6 @@ namespace Royale.Tests
             Assert.AreEqual(card.Type, cardOnPage.Type);
             Assert.AreEqual(card.Arena, cardOnPage.Arena);
             Assert.AreEqual(card.Rarity, cardOnPage.Rarity);
-            //Assert.Pass();
         }
     }
 }

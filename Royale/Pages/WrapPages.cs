@@ -1,10 +1,9 @@
-﻿using Framework.Selenium;
-using System;
+﻿using System;
 
 
 namespace Royale.Pages
 {
-    public class WrapPages
+  public class WrapPages
     {
         [ThreadStatic]
         public static CardsPage Cards;

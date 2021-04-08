@@ -23,8 +23,6 @@ namespace Royale.Pages
         public CopyDeckPage No() {
             AcceptCookies();
             Map.NoButton.Click();
-            //AcceptCookies();
-            //Driver.wait.Until(drvr => Map.GooglePlayButton.Displayed);
             Driver.wait.Until(ExpectedConditions.ElementIsVisible(Map.GooglePlayButton.FoundBy));
             return this;
         }
@@ -34,13 +32,8 @@ namespace Royale.Pages
             return new ClassRoyalSuperCell();
         }
 
-        //public void OpenGooglePlay() {
-        //    Map.GooglePlayButton.Click();
-        //}
-
         public void AcceptCookies() {
             Map.AcceptCookiesButton.Click();
-            //Driver.wait.Until(drvr => !Map.AcceptCookiesButton.Displayed);
             Driver.wait.Until(WaitConditions.ElementNotDisplayed(Map.AcceptCookiesButton));
         }
     }

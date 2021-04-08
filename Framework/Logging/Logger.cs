@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Framework.Logging
 {
-   public class Logger
+  public class Logger
     {
         private readonly string _filepath;
 

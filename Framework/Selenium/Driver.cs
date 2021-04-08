@@ -1,14 +1,10 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Text;
 
 namespace Framework.Selenium
 {
-    public static class Driver
+  public static class Driver
     {
         [ThreadStatic]
         private static IWebDriver _driver;
@@ -58,7 +54,6 @@ namespace Framework.Selenium
                 FoundBy = by
             };
         }
-
 
         public static Elements FindElements(By by) {
             return new Elements(Current.FindElements(by))

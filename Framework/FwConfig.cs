@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Framework
+﻿namespace Framework
 {
-    public class FwConfig
+  public class FwConfig
     {
           public DriverSettings Driver { get; set; }
           public TestSettings Test { get; set; }

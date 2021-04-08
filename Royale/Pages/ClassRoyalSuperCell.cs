@@ -1,12 +1,9 @@
 ﻿using Framework.Selenium;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Royale.Pages
 {
-    public class ClassRoyalSuperCell
+  public class ClassRoyalSuperCell
     {
 
         public readonly ClassRoyalSuperCellMap Map;

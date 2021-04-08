@@ -1,5 +1,4 @@
-﻿using Framework;
-using Framework.Selenium;
+﻿using Framework.Selenium;
 using NUnit.Framework;
 using Royale.Pages;
 using Royale.Tests.Base;
@@ -22,7 +21,6 @@ namespace Royale.Tests
             WrapPages.DeckBuilder.GoTo().AddCardsManualy();
             WrapPages.DeckBuilder.CopySuggestedDeck();
             WrapPages.CopyDeck.No().GoToClassRoyalSuperCellPage("App Store").OpenAppStore();
-            //WrapPages.CopyDeck.No().OpenAppStore();
             Assert.That(Driver.Title,Is.EqualTo("‎Clash Royale on the App Store"));
         }
 
@@ -31,7 +29,6 @@ namespace Royale.Tests
             WrapPages.DeckBuilder.GoTo().AddCardsManualy();
             WrapPages.DeckBuilder.CopySuggestedDeck();
             WrapPages.CopyDeck.No().GoToClassRoyalSuperCellPage("Google Play").OpenGooglePlay();
-            //WrapPages.CopyDeck.No().OpenGooglePlay();
             Assert.AreEqual("Clash Royale - Apps on Google Play", Driver.Title);
         }
     }

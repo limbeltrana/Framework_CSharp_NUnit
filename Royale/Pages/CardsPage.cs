@@ -1,12 +1,9 @@
 ﻿using Framework.Selenium;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Royale.Pages
 {
-    public class CardsPage : PageBase
+  public class CardsPage : PageBase
 
     {
         public readonly CardsPageMap Map;
@@ -34,8 +31,6 @@ namespace Royale.Pages
 
     public class CardsPageMap
     {
-
-        //public IWebElement IceSpiritCard => _driver.FindElement(By.CssSelector("a[href *= 'Ice+Spirit']"));
         public Element Card(string name) => Driver.FindElement(By.CssSelector($"a[href *= '{name}']"), $"Card {name}");
     }
 }
